@@ -166,3 +166,205 @@ for (let i = 0; i < navigationLinks.length; i++) {
     window.scrollTo(0, 0);
   });
 }
+
+
+
+// Space Particle Background
+(function() {
+  const canvas = document.getElementById('particles-canvas');
+  if (!canvas) return;
+  
+  const ctx = canvas.getContext('2d');
+  
+  let width, height;
+  let mouseX = 0, mouseY = 0;
+  let particles = [];
+  const particleCount = 120;
+  const connectionDistance = 150;
+  const mouseRadius = 300;
+  
+  // Purple/violet color scheme to match theme
+  const colors = [
+    'rgba(180, 130, 255, ',
+    'rgba(147, 112, 219, ',
+    'rgba(138, 43, 226, ',
+    'rgba(255, 255, 255, ',
+    'rgba(200, 160, 255, '
+  ];
+  
+  function resize() {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+  }
+  
+  class Particle {
+    constructor() {
+      this.reset();
+    }
+    
+    reset() {
+      this.x = Math.random() * width;
+      this.y = Math.random() * height;
+      this.baseSize = Math.random() * 2 + 0.5;
+      this.size = this.baseSize;
+      this.speedX = 0;
+      this.speedY = 0;
+      this.color = colors[Math.floor(Math.random() * colors.length)];
+      this.alpha = Math.random() * 0.5 + 0.3;
+      this.targetAlpha = this.alpha;
+      this.pulseSpeed = Math.random() * 0.003 + 0.002;
+      this.pulseOffset = Math.random() * Math.PI * 2;
+      this.pulseAmount = Math.random() * 0.5 + 0.3;
+    }
+    
+    update(time) {
+      const heartbeat = Math.sin(time * this.pulseSpeed + this.pulseOffset);
+      const pulse = Math.pow(Math.abs(heartbeat), 0.5) * Math.sign(heartbeat);
+      this.size = this.baseSize * (1 + pulse * this.pulseAmount);
+      this.currentAlpha = this.alpha * (1 + pulse * 0.3);
+      
+      const dx = mouseX - this.x;
+      const dy = mouseY - this.y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      
+      if (dist < mouseRadius) {
+        const force = (mouseRadius - dist) / mouseRadius;
+        const angle = Math.atan2(dy, dx);
+        this.speedX += Math.cos(angle) * force * 0.02;
+        this.speedY += Math.sin(angle) * force * 0.02;
+        this.currentAlpha = Math.min(1, this.currentAlpha + force * 0.3);
+      }
+      
+      this.x += this.speedX;
+      this.y += this.speedY;
+      this.speedX *= 0.98;
+      this.speedY *= 0.98;
+      
+      if (this.x < -10) this.x = width + 10;
+      if (this.x > width + 10) this.x = -10;
+      if (this.y < -10) this.y = height + 10;
+      if (this.y > height + 10) this.y = -10;
+    }
+    
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size * 0.5, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(255, 255, 255, ' + this.currentAlpha + ')';
+      ctx.fill();
+      
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fillStyle = this.color + (this.currentAlpha * 0.9) + ')';
+      ctx.fill();
+      
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size * 1.3, 0, Math.PI * 2);
+      ctx.strokeStyle = this.color + (this.currentAlpha * 0.5) + ')';
+      ctx.lineWidth = 0.5;
+      ctx.stroke();
+    }
+  }
+  
+  function drawConnections() {
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        
+        if (dist < connectionDistance) {
+          const opacity = (1 - dist / connectionDistance) * 0.15;
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = `rgba(180, 130, 255, ${opacity})`;
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+        }
+      }
+    }
+  }
+  
+  function init() {
+    resize();
+    particles = [];
+    for (let i = 0; i < particleCount; i++) {
+      particles.push(new Particle());
+    }
+  }
+  
+  function animate(time) {
+    ctx.clearRect(0, 0, width, height);
+    drawConnections();
+    particles.forEach(p => {
+      p.update(time);
+      p.draw();
+    });
+    requestAnimationFrame(animate);
+  }
+  
+  window.addEventListener('resize', resize);
+  window.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  });
+  window.addEventListener('touchmove', (e) => {
+    mouseX = e.touches[0].clientX;
+    mouseY = e.touches[0].clientY;
+  });
+  
+  init();
+  animate(0);
+})();
+
+
+
+// Background toggle functionality
+(function() {
+  const toggleBtn = document.getElementById('bgToggle');
+  if (!toggleBtn) return;
+  
+  const main = document.querySelector('main');
+  const navbar = document.querySelector('.navbar');
+  let isHidden = false;
+
+  toggleBtn.addEventListener('click', function() {
+    isHidden = !isHidden;
+    main.classList.toggle('hidden-content', isHidden);
+    if (navbar) navbar.style.opacity = isHidden ? '0' : '1';
+    this.querySelector('ion-icon').setAttribute('name', isHidden ? 'eye-off-outline' : 'eye-outline');
+  });
+})();
+
+
+
+// Infinite carousel for testimonials and clients
+(function() {
+  function createInfiniteCarousel(containerSelector) {
+    const container = document.querySelector(containerSelector);
+    if (!container) return;
+    
+    const items = Array.from(container.children);
+    if (items.length === 0) return;
+    
+    const track = document.createElement('div');
+    track.className = 'carousel-track';
+    
+    items.forEach(item => track.appendChild(item));
+    items.forEach(item => track.appendChild(item.cloneNode(true)));
+    
+    container.innerHTML = '';
+    container.appendChild(track);
+  }
+  
+  function initCarousels() {
+    createInfiniteCarousel('.testimonials-list');
+    createInfiniteCarousel('.clients-list');
+  }
+  
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCarousels);
+  } else {
+    initCarousels();
+  }
+})();

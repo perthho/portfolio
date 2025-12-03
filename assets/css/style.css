@@ -1889,3 +1889,132 @@ textarea.form-input::-webkit-resizer { display: none; }
   .timeline-text { max-width: 700px; }
 
 }
+
+
+
+/*-----------------------------------*\
+  #CUSTOM ADDITIONS
+\*-----------------------------------*/
+
+/**
+ * Space Particle Background
+ */
+
+#particles-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/**
+ * About section links
+ */
+
+.about-text a {
+  color: var(--orange-yellow-crayola);
+  text-decoration: underline;
+  transition: color 0.25s ease;
+}
+
+.about-text a:hover {
+  color: #ff6b6b;
+}
+
+/**
+ * Toggle background button
+ */
+
+.bg-toggle-btn {
+  position: fixed;
+  bottom: 100px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: hsla(240, 1%, 17%, 0.8);
+  border: 1px solid var(--jet);
+  color: var(--light-gray);
+  cursor: pointer;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.bg-toggle-btn:hover {
+  background: var(--orange-yellow-crayola);
+  color: #000;
+}
+
+.bg-toggle-btn ion-icon {
+  font-size: 20px;
+}
+
+/**
+ * Hidden state for content
+ */
+
+main {
+  transition: opacity 0.5s ease;
+}
+
+main.hidden-content {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/**
+ * Carousel styles
+ */
+
+.testimonials-list,
+.clients-list {
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 25px 0 35px 0 !important;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 15px;
+  width: max-content;
+  padding: 0 15px;
+}
+
+.testimonials-list .carousel-track {
+  animation: scrollLeft 40s linear infinite;
+}
+
+.clients-list .carousel-track {
+  animation: scrollRight 25s linear infinite;
+}
+
+.testimonials-list .testimonials-item {
+  min-width: 300px;
+  max-width: 300px;
+  flex-shrink: 0;
+}
+
+.clients-list .clients-item {
+  flex-shrink: 0;
+}
+
+@keyframes scrollLeft {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes scrollRight {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+.carousel-track:hover {
+  animation-play-state: paused;
+}
