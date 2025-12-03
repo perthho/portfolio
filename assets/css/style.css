@@ -1709,6 +1709,8 @@ textarea.form-input::-webkit-resizer { display: none; }
     left: auto;
     right: 0;
     width: max-content;
+    max-width: none;
+    transform: none;
     border-radius: 0 20px;
     padding: 0 20px;
     box-shadow: none;

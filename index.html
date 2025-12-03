@@ -46,12 +46,54 @@
       color: #ff6b6b;
     }
 
+    /* Toggle background button */
+    .bg-toggle-btn {
+      position: fixed;
+      bottom: 100px;
+      right: 20px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: hsla(240, 1%, 17%, 0.8);
+      border: 1px solid var(--jet);
+      color: var(--light-gray);
+      cursor: pointer;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+    .bg-toggle-btn:hover {
+      background: var(--orange-yellow-crayola);
+      color: #000;
+    }
+    .bg-toggle-btn ion-icon {
+      font-size: 20px;
+    }
+    
+    /* Hidden state for content */
+    main.hidden-content {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s ease;
+    }
+    main {
+      transition: opacity 0.5s ease;
+    }
+
   </style>
 </head>
 
 <body>
 
   <canvas id="particles-canvas"></canvas>
+
+  <!-- Toggle button to show/hide content -->
+  <button class="bg-toggle-btn" id="bgToggle" title="Toggle background view">
+    <ion-icon name="eye-outline"></ion-icon>
+  </button>
 
   <!--
     - #MAIN
@@ -1285,6 +1327,23 @@
       // Initialize
       init();
       animate(0);
+    })();
+  </script>
+
+  <!-- Background toggle script -->
+  <script>
+    (function() {
+      const toggleBtn = document.getElementById('bgToggle');
+      const main = document.querySelector('main');
+      const navbar = document.querySelector('.navbar');
+      let isHidden = false;
+
+      toggleBtn.addEventListener('click', function() {
+        isHidden = !isHidden;
+        main.classList.toggle('hidden-content', isHidden);
+        if (navbar) navbar.style.opacity = isHidden ? '0' : '1';
+        this.querySelector('ion-icon').setAttribute('name', isHidden ? 'eye-off-outline' : 'eye-outline');
+      });
     })();
   </script>
 
