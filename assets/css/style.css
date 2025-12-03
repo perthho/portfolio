@@ -459,6 +459,8 @@ main {
   position: fixed;
   bottom: 30px;
   left: 0;
+  margin-left: 30px;
+  margin-right: 30px;
   width: 100%;
   background: hsla(240, 1%, 17%, 0.75);
   backdrop-filter: blur(10px);
