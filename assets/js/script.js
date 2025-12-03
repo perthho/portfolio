@@ -368,3 +368,46 @@ for (let i = 0; i < navigationLinks.length; i++) {
     initCarousels();
   }
 })();
+
+
+document.querySelector("[data-form]").addEventListener("submit", async function(e) {
+  e.preventDefault();
+
+  const form = e.target;
+  const submitBtn = form.querySelector("[data-form-btn]");
+  submitBtn.disabled = true;
+
+  const formData = new FormData(form);
+
+  const response = await fetch("https://api.web3forms.com/submit", {
+    method: "POST",
+    body: formData
+  });
+
+  if (response.ok) {
+    showPopup("Your message has been sent!");
+    form.reset();
+    submitBtn.disabled = false;
+  } else {
+    showPopup("Something went wrong. Try again.");
+    submitBtn.disabled = false;
+  }
+});
+
+function showPopup(message) {
+  const popup = document.createElement("div");
+  popup.innerText = message;
+  popup.style.position = "fixed";
+  popup.style.bottom = "20px";
+  popup.style.right = "20px";
+  popup.style.background = "#4ade80";
+  popup.style.color = "#fff";
+  popup.style.padding = "12px 18px";
+  popup.style.borderRadius = "8px";
+  popup.style.boxShadow = "0 2px 10px rgba(0,0,0,0.2)";
+  popup.style.fontSize = "14px";
+  popup.style.zIndex = "9999";
+  document.body.appendChild(popup);
+
+  setTimeout(() => popup.remove(), 3000);
+}
