@@ -131,6 +131,11 @@ li { list-style: none; }
 
 img, ion-icon, a, button, time, span { display: block; }
 
+img {
+  max-width: 100%;
+  height: auto;
+}
+
 button {
   font: inherit;
   background: none;
@@ -153,9 +158,16 @@ input, textarea {
 
 :focus { outline-color: var(--orange-yellow-crayola); }
 
-html { font-family: var(--ff-poppins); }
+html {
+  font-family: var(--ff-poppins);
+  overflow-x: hidden;
+}
 
-body { background: var(--smoky-black); }
+body {
+  background: var(--smoky-black);
+  overflow-x: hidden;
+  min-height: 100vh;
+}
 
 
 
@@ -173,6 +185,8 @@ article {
   padding: 15px;
   box-shadow: var(--shadow-1);
   z-index: 1;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .separator {
@@ -303,7 +317,9 @@ article.active {
 main {
   margin: 15px 12px;
   margin-bottom: 75px;
-  min-width: 259px;
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 
@@ -319,6 +335,8 @@ main {
   max-height: 112px;
   overflow: hidden;
   transition: var(--transition-2);
+  max-width: 100%;
+  word-wrap: break-word;
 }
 
 .sidebar.active { max-height: 405px; }
@@ -426,6 +444,8 @@ main {
 .contact-info :is(.contact-link, time, address) {
   color: var(--white-2);
   font-size: var(--fs-7);
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .contact-info address { font-style: normal; }
@@ -468,6 +488,7 @@ main {
   border-radius: 30px;
   box-shadow: var(--shadow-2);
   z-index: 5;
+  box-sizing: border-box;
 }
 
 .navbar-list {
@@ -505,6 +526,8 @@ main {
   font-size: var(--fs-6);
   font-weight: var(--fw-300);
   line-height: 1.6;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .about-text p { margin-bottom: 15px; }
@@ -572,13 +595,14 @@ main {
   justify-content: flex-start;
   align-items: flex-start;
   gap: 15px;
-  margin: 0 -15px;
+  margin: 0;
   padding: 25px 15px;
   padding-bottom: 35px;
   overflow-x: auto;
   scroll-behavior: smooth;
   overscroll-behavior-inline: contain;
   scroll-snap-type: inline mandatory;
+  max-width: 100%;
 }
 
 .testimonials-item {
@@ -668,6 +692,8 @@ main {
   box-shadow: var(--shadow-5);
   transform: scale(1.2);
   opacity: 0;
+  max-width: calc(100% - 24px);
+  box-sizing: border-box;
   transition: var(--transition-1);
   z-index: 2;
 }
@@ -736,14 +762,15 @@ main {
   justify-content: flex-start;
   align-items: flex-start;
   gap: 15px;
-  margin: 0 -15px;
-  padding: 55px;
+  margin: 0;
+  padding: 25px 15px;
   padding-bottom: 25px;
   overflow-x: auto;
   scroll-behavior: smooth;
   overscroll-behavior-inline: contain;
   scroll-snap-type: inline mandatory;
   scroll-padding-inline: 25px;
+  max-width: 100%;
 }
 
 .clients-item {
@@ -830,6 +857,8 @@ main {
   color: var(--light-gray);
   font-weight: var(--fw-300);
   line-height: 1.6;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 
@@ -940,6 +969,8 @@ main {
   grid-template-columns: 1fr;
   gap: 30px;
   margin-bottom: 10px;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .project-item { display: none; }
@@ -1008,6 +1039,7 @@ main {
   height: 100%;
   object-fit: cover;
   transition: var(--transition-1);
+  max-width: 100%;
 }
 
 .project-item > a:hover img { transform: scale(1.1); }
@@ -1233,6 +1265,49 @@ textarea.form-input::-webkit-resizer { display: none; }
 \*-----------------------------------*/
 
 /**
+ * responsive for very small screens (less than 350px)
+ */
+
+@media (max-width: 350px) {
+
+  main {
+    margin: 10px 8px;
+    margin-bottom: 70px;
+  }
+
+  .sidebar, article {
+    padding: 12px;
+  }
+
+  .navbar-link {
+    font-size: 10px;
+    padding: 15px 5px;
+  }
+
+  .info-content .name {
+    font-size: 16px;
+  }
+
+  .info-content .title {
+    font-size: 10px;
+    padding: 2px 8px;
+  }
+
+  .avatar-box img {
+    width: 60px;
+  }
+
+  .service-item {
+    padding: 15px;
+  }
+
+  .h2 { font-size: 20px; }
+  .h3 { font-size: 16px; }
+  .h4 { font-size: 14px; }
+
+}
+
+/**
  * responsive larger than 450px screen
  */
 
@@ -1292,9 +1367,11 @@ textarea.form-input::-webkit-resizer { display: none; }
    */
 
   .sidebar, article {
-    width: 520px;
+    width: 100%;
+    max-width: 520px;
     margin-inline: auto;
     padding: 30px;
+    box-sizing: border-box;
   }
 
   .article-title {
@@ -1559,7 +1636,10 @@ textarea.form-input::-webkit-resizer { display: none; }
    * REUSED STYLE
    */
 
-  .sidebar, article { width: 700px; }
+  .sidebar, article {
+    width: 100%;
+    max-width: 700px;
+  }
 
   .has-scrollbar::-webkit-scrollbar-button { width: 100px; }
 
@@ -1609,9 +1689,10 @@ textarea.form-input::-webkit-resizer { display: none; }
 
   .filter-list {
     display: flex;
+    flex-wrap: wrap;
     justify-content: flex-start;
     align-items: center;
-    gap: 25px;
+    gap: 15px 25px;
     padding-left: 5px;
     margin-bottom: 30px;
   }
@@ -1678,7 +1759,8 @@ textarea.form-input::-webkit-resizer { display: none; }
    */
 
   .sidebar, article {
-    width: 950px;
+    width: 100%;
+    max-width: 950px;
     box-shadow: var(--shadow-5);
   }
 
@@ -1692,7 +1774,8 @@ textarea.form-input::-webkit-resizer { display: none; }
 
   .main-content {
     position: relative;
-    width: max-content;
+    width: 100%;
+    max-width: 950px;
     margin: auto;
   }
 
@@ -1818,11 +1901,13 @@ textarea.form-input::-webkit-resizer { display: none; }
   }
 
   .main-content {
-    min-width: 75%;
-    width: 75%;
+    min-width: 0;
+    width: calc(100% - 300px);
+    max-width: 900px;
     margin: 0;
-    margin-left: 300px;
+    margin-left: 290px;
     margin-top: 40px;
+    box-sizing: border-box;
   }
 
 
@@ -1834,12 +1919,14 @@ textarea.form-input::-webkit-resizer { display: none; }
   .sidebar {
     position: fixed;
     top: 40px;
-    left: 150px;
+    left: max(20px, calc((100vw - 1200px) / 2));
     max-height: max-content;
     height: 90%;
     margin-bottom: 0;
     padding-top: 60px;
     z-index: 1;
+    width: 250px;
+    max-width: 250px;
   }
 
   .sidebar-info { flex-direction: column; }
@@ -1978,6 +2065,7 @@ main.hidden-content {
   overflow: hidden !important;
   margin: 0 !important;
   padding: 25px 0 35px 0 !important;
+  max-width: 100% !important;
 }
 
 .carousel-track {
