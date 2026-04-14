@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resume - Parth Patel</title>
+  <meta name="description" content="Resume of Parth Patel - Education, experience, and skills.">
+  <meta name="author" content="Parth Patel">
+
+  <meta property="og:title" content="Resume - Parth Patel">
+  <meta property="og:description" content="Resume of Parth Patel - Education, experience, and skills.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="./assets/images/my-avatar.jpeg">
+
+  <link rel="icon" href="./assets/images/logo.ico" type="image/x-icon">
+  <link rel="stylesheet" href="./assets/css/style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <canvas id="particles-canvas"></canvas>
+
+  <button class="bg-toggle-btn" id="bgToggle" title="Toggle background view" aria-label="Toggle background view">
+    <ion-icon name="eye-outline"></ion-icon>
+  </button>
+
+  <main>
+
+    <aside class="sidebar" data-sidebar>
+
+      <div class="sidebar-info">
+
+        <figure class="avatar-box">
+          <img src="./assets/images/my-avatar.jpeg" alt="Parth Patel" width="80">
+        </figure>
+
+        <div class="info-content">
+          <h1 class="name" title="Parth Patel">Parth Patel</h1>
+          <p class="title">Web developer</p>
+        </div>
+
+        <button class="info_more-btn" data-sidebar-btn aria-label="Show contact details" aria-expanded="false">
+          <span>Show Contacts</span>
+          <ion-icon name="chevron-down"></ion-icon>
+        </button>
+
+      </div>
+
+      <div class="sidebar-info_more">
+
+        <div class="separator"></div>
+
+        <ul class="contacts-list">
+
+          <li class="contact-item">
+            <div class="icon-box">
+              <ion-icon name="mail-outline"></ion-icon>
+            </div>
+            <div class="contact-info">
+              <p class="contact-title">Email</p>
+              <a href="mailto:perthhho@gmail.com" class="contact-link">perthhho@gmail.com</a>
+            </div>
+          </li>
+
+          <li class="contact-item">
+            <div class="icon-box">
+              <ion-icon name="phone-portrait-outline"></ion-icon>
+            </div>
+            <div class="contact-info">
+              <p class="contact-title">Phone</p>
+              <a href="tel:+919313383425" class="contact-link">+91 93133 83425</a>
+            </div>
+          </li>
+
+          <li class="contact-item">
+            <div class="icon-box">
+              <ion-icon name="calendar-outline"></ion-icon>
+            </div>
+            <div class="contact-info">
+              <p class="contact-title">Birthday</p>
+              <time datetime="2005-12-24">December 24, 2005</time>
+            </div>
+          </li>
+
+          <li class="contact-item">
+            <div class="icon-box">
+              <ion-icon name="location-outline"></ion-icon>
+            </div>
+            <div class="contact-info">
+              <p class="contact-title">Location</p>
+              <address>Vadodara, Gujarat, India</address>
+            </div>
+          </li>
+
+        </ul>
+
+        <div class="separator"></div>
+
+        <ul class="social-list">
+
+          <li class="social-item">
+            <a href="https://github.com/Perthho" target="_blank" rel="noopener" class="social-link" aria-label="GitHub">
+              <ion-icon name="logo-github"></ion-icon>
+            </a>
+          </li>
+
+          <li class="social-item">
+            <a href="https://www.linkedin.com/in/parth-patel-kumar/" target="_blank" rel="noopener" class="social-link" aria-label="LinkedIn">
+              <ion-icon name="logo-linkedin"></ion-icon>
+            </a>
+          </li>
+
+          <li class="social-item">
+            <a href="https://instagram.com/perthhho" target="_blank" rel="noopener" class="social-link" aria-label="Instagram">
+              <ion-icon name="logo-instagram"></ion-icon>
+            </a>
+          </li>
+
+        </ul>
+
+      </div>
+
+    </aside>
+
+
+    <div class="main-content">
+
+      <nav class="navbar">
+        <ul class="navbar-list">
+          <li class="navbar-item"><a class="navbar-link" href="index.html">About</a></li>
+          <li class="navbar-item"><a class="navbar-link active" href="resume.html">Resume</a></li>
+          <li class="navbar-item"><a class="navbar-link" href="portfolio.html">Portfolio</a></li>
+          <li class="navbar-item"><a class="navbar-link" href="tools.html">Tools</a></li>
+          <li class="navbar-item"><a class="navbar-link" href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+
+      <article class="resume active" data-page="resume">
+
+        <header class="resume-header">
+          <h2 class="h2 article-title">Resume</h2>
+          <a href="./doc/zip.zip" download class="download-btn" aria-label="Download resume as PDF">
+            <ion-icon name="download-outline"></ion-icon>
+            <span>Download CV</span>
+          </a>
+        </header>
+
+        <section class="timeline">
+
+          <div class="title-wrapper">
+            <div class="icon-box">
+              <ion-icon name="book-outline"></ion-icon>
+            </div>
+            <h3 class="h3">Education</h3>
+          </div>
+
+          <ol class="timeline-list">
+
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">Bachelor of Technology @ <i>Parul University</i></h4>
+              <span>2023 — 2027</span>
+              <p class="timeline-text">
+                I am currently pursuing my Bachelor of Technology degree at Parul University, specializing in Computer Science and Engineering. My coursework includes data structures, algorithms, web development, and software engineering.
+              </p>
+            </li>
+
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">High School @ <i>Vedant International School</i></h4>
+              <span>2021-2023</span>
+              <p class="timeline-text">
+                I completed my high school education at Vedant International School, where I focused on a broad curriculum that included science, mathematics, and humanities. This foundation has prepared me well for my current studies in technology.
+              </p>
+            </li>
+
+          </ol>
+
+        </section>
+
+        <section class="timeline">
+
+          <div class="title-wrapper">
+            <div class="icon-box">
+              <ion-icon name="book-outline"></ion-icon>
+            </div>
+            <h3 class="h3">Experience</h3>
+          </div>
+
+          <ol class="timeline-list">
+
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">Startup Co-founder</h4>
+              <span>Nov 2025 — Present</span>
+              <p class="timeline-text">
+                Currently, I am co-founding a startup focused on developing innovative cross platform applications. As a co-founder, I am involved in strategic planning, product development, and team management to drive the company's growth and success.
+              </p>
+            </li>
+
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">Web developer</h4>
+              <span>Feb 2024 — Nov 2025</span>
+              <p class="timeline-text">
+                I worked as a web developer intern at Elenemts International LLP, where I contributed to the development of client websites using HTML, CSS, and JavaScript, Bootstrap, Jekyll. I collaborated with the design team to implement responsive designs and enhance user experience.
+              </p>
+            </li>
+
+          </ol>
+
+        </section>
+
+        <section class="skill">
+
+          <h3 class="h3 skills-title">My skills</h3>
+
+          <div class="skills-grid">
+
+            <div class="skill-category">
+              <h4 class="h4 skill-category-title">Frontend</h4>
+              <ul class="skill-chips">
+                <li class="skill-chip">HTML</li>
+                <li class="skill-chip">CSS</li>
+                <li class="skill-chip">JavaScript</li>
+                <li class="skill-chip">React</li>
+                <li class="skill-chip">Bootstrap</li>
+                <li class="skill-chip">Jekyll</li>
+              </ul>
+            </div>
+
+            <div class="skill-category">
+              <h4 class="h4 skill-category-title">Backend & Tools</h4>
+              <ul class="skill-chips">
+                <li class="skill-chip">Node.js</li>
+                <li class="skill-chip">Git</li>
+                <li class="skill-chip">Linux</li>
+                <li class="skill-chip">Vercel</li>
+              </ul>
+            </div>
+
+            <div class="skill-category">
+              <h4 class="h4 skill-category-title">Design</h4>
+              <ul class="skill-chips">
+                <li class="skill-chip">UI/UX Design</li>
+                <li class="skill-chip">Responsive Design</li>
+                <li class="skill-chip">Figma</li>
+              </ul>
+            </div>
+
+          </div>
+
+        </section>
+
+      </article>
+
+    </div>
+
+  </main>
+
+  <script src="./assets/js/script.js"></script>
+
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>

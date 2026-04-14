@@ -5,23 +5,18 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Parth Patel - Web Developer & UI/UX Designer</title>
-  <meta name="description" content="Parth Patel - Web developer and UI/UX designer from Vadodara, India. Building fast, responsive websites and cross-platform applications.">
+  <title>Contact - Parth Patel</title>
+  <meta name="description" content="Contact Parth Patel - Get in touch for web development and design projects.">
   <meta name="author" content="Parth Patel">
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Parth Patel - Web Developer & UI/UX Designer">
-  <meta property="og:description" content="Web developer and UI/UX designer from Vadodara, India. Building fast, responsive websites and cross-platform applications.">
+  <meta property="og:title" content="Contact - Parth Patel">
+  <meta property="og:description" content="Contact Parth Patel - Get in touch for web development and design projects.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="./assets/images/my-avatar.jpeg">
 
-  <!-- Favicon -->
   <link rel="icon" href="./assets/images/logo.ico" type="image/x-icon">
-
-  <!-- Styles -->
   <link rel="stylesheet" href="./assets/css/style.css">
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -138,92 +133,56 @@
 
       <nav class="navbar">
         <ul class="navbar-list">
-          <li class="navbar-item"><a class="navbar-link active" href="index.html">About</a></li>
+          <li class="navbar-item"><a class="navbar-link" href="index.html">About</a></li>
           <li class="navbar-item"><a class="navbar-link" href="resume.html">Resume</a></li>
           <li class="navbar-item"><a class="navbar-link" href="portfolio.html">Portfolio</a></li>
           <li class="navbar-item"><a class="navbar-link" href="tools.html">Tools</a></li>
-          <li class="navbar-item"><a class="navbar-link" href="contact.html">Contact</a></li>
+          <li class="navbar-item"><a class="navbar-link active" href="contact.html">Contact</a></li>
         </ul>
       </nav>
 
 
-      <article class="about active" data-page="about">
+      <article class="contact active" data-page="contact">
 
         <header>
-          <h2 class="h2 article-title">About me</h2>
+          <h2 class="h2 article-title">Contact</h2>
         </header>
 
-        <section class="about-text">
-          <p>
-            I'm Creative Director and UI/UX Designer from Vadodara, India, working as a web developer and ui designer.
-            I enjoy
-            turning complex problems into simple, beautiful and intuitive designs.
+        
+        <section class="contact-form">
+          
+          <h3 class="h3 form-title">Send a Message</h3>
+          <p class="form-intro">
+            Got a project in mind, a role to discuss, or just want to say hi? I'd love to hear from you.
           </p>
+          
+          <form action="https://api.web3forms.com/submit" method="POST" class="form" data-form>
 
-          <p>
-            My job is to build your designs and website so that it is functional and user-friendly but at the same time attractive.
-            Moreover, I
-            add personal touch to your product and make sure that is eye-catching and easy to use. My aim is to bring
-            across your
-            message and identity in the most creative way.
-          </p>
-
-          <ul class="about-projects-list">
-            <li>Photobooth business site — <a href="https://www.clickprintphotobooth.in/" target="_blank">clickprintphotobooth.in</a></li>
-            <li>Landing page for Startup — <a href="https://campusbook-webapp.vercel.app/" target="_blank">CampusBook</a></li>
-            <li>Blog website — <a href="https://wanderwayword.com/" target="_blank">wanderwayword.com</a></li>
-            <li>Automatic kiosk webapp — <a href="https://autoprint-web.vercel.app/" target="_blank">AutoPrint</a></li>
-            <li>AI Sales Copilot dashboard — <a href="https://main.ds8tdoe9ri88y.amplifyapp.com/dashboard" target="_blank">AI Sales Copilot</a></li>
-          </ul>
+            <input type="hidden" name="access_key" value="24a13e1a-2fc6-4d97-b83d-4d6b1db8a5bb">
+            
+            <div class="input-wrapper">
+              <input type="text" name="fullname" class="form-input" placeholder="Full name" required data-form-input>
+              <input type="email" name="email" class="form-input" placeholder="Email address" required data-form-input>
+            </div>
+            
+            <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input></textarea>
+            
+            <button class="form-btn" type="submit" disabled data-form-btn>
+              <ion-icon name="paper-plane"></ion-icon>
+              <span>Send Message</span>
+            </button>
+            
+          </form>
+          
         </section>
-
-
-        <section class="service">
-
-          <h3 class="h3 service-title">What i'm doing</h3>
-
-          <ul class="service-list">
-
-            <li class="service-item">
-              <div class="service-icon-box">
-                <img src="./assets/images/icon-design.png" alt="design icon" width="40">
-              </div>
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Web design</h4>
-                <p class="service-item-text">
-                  Clean, responsive interfaces designed with attention to usability and visual hierarchy.
-                </p>
-              </div>
-            </li>
-
-            <li class="service-item">
-              <div class="service-icon-box">
-                <img src="./assets/images/icon-dev.png" alt="Web development icon" width="40">
-              </div>
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Web development</h4>
-                <p class="service-item-text">
-                  Building fast, accessible websites and web apps using modern HTML, CSS, JavaScript, and frameworks.
-                </p>
-              </div>
-            </li>
-
-            <li class="service-item">
-              <div class="service-icon-box">
-                <img src="./assets/images/icon-app.png" alt="mobile app icon" width="40">
-              </div>
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Cross-platform apps</h4>
-                <p class="service-item-text">
-                  Developing cross-platform applications that work seamlessly on both iOS and Android.
-                </p>
-              </div>
-            </li>
-
-          </ul>
-
+        
+        <section class="mapbox" data-mapbox>
+          <figure>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d125817.97974537825!2d73.23616981566552!3d22.289362959177428!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1764766188431!5m2!1sen!2sin"
+              width="400" height="300" loading="lazy"></iframe>
+          </figure>
         </section>
-
       </article>
 
     </div>

@@ -50,33 +50,15 @@ sidebarBtn.addEventListener("click", function () {
 
 
 
-// custom select variables
+// custom select variables (portfolio page only)
 const select = document.querySelector("[data-select]");
 const selectItems = document.querySelectorAll("[data-select-item]");
 const selectValue = document.querySelector("[data-selecct-value]");
 const filterBtn = document.querySelectorAll("[data-filter-btn]");
-
-select.addEventListener("click", function () { elementToggleFunc(this); });
-
-// add event in all select items
-for (let i = 0; i < selectItems.length; i++) {
-  selectItems[i].addEventListener("click", function () {
-
-    let selectedValue = this.innerText.toLowerCase();
-    selectValue.innerText = this.innerText;
-    elementToggleFunc(select);
-    filterFunc(selectedValue);
-
-  });
-}
-
-// filter variables
 const filterItems = document.querySelectorAll("[data-filter-item]");
 
 const filterFunc = function (selectedValue) {
-
   for (let i = 0; i < filterItems.length; i++) {
-
     if (selectedValue === "all") {
       filterItems[i].classList.add("active");
     } else if (selectedValue === filterItems[i].dataset.category) {
@@ -84,49 +66,54 @@ const filterFunc = function (selectedValue) {
     } else {
       filterItems[i].classList.remove("active");
     }
-
   }
+};
 
+if (select) {
+  select.addEventListener("click", function () { elementToggleFunc(this); });
+
+  for (let i = 0; i < selectItems.length; i++) {
+    selectItems[i].addEventListener("click", function () {
+      let selectedValue = this.innerText.toLowerCase();
+      selectValue.innerText = this.innerText;
+      elementToggleFunc(select);
+      filterFunc(selectedValue);
+    });
+  }
 }
 
-// add event in all filter button items for large screen
-let lastClickedBtn = filterBtn[0];
+if (filterBtn.length) {
+  let lastClickedBtn = filterBtn[0];
+  for (let i = 0; i < filterBtn.length; i++) {
+    filterBtn[i].addEventListener("click", function () {
+      let selectedValue = this.innerText.toLowerCase();
+      if (selectValue) selectValue.innerText = this.innerText;
+      filterFunc(selectedValue);
 
-for (let i = 0; i < filterBtn.length; i++) {
-
-  filterBtn[i].addEventListener("click", function () {
-
-    let selectedValue = this.innerText.toLowerCase();
-    selectValue.innerText = this.innerText;
-    filterFunc(selectedValue);
-
-    lastClickedBtn.classList.remove("active");
-    this.classList.add("active");
-    lastClickedBtn = this;
-
-  });
-
+      lastClickedBtn.classList.remove("active");
+      this.classList.add("active");
+      lastClickedBtn = this;
+    });
+  }
 }
 
 
 
-// contact form variables
+// contact form variables (contact page only)
 const form = document.querySelector("[data-form]");
 const formInputs = document.querySelectorAll("[data-form-input]");
 const formBtn = document.querySelector("[data-form-btn]");
 
-// add event to all form input field
-for (let i = 0; i < formInputs.length; i++) {
-  formInputs[i].addEventListener("input", function () {
-
-    // check form validation
-    if (form.checkValidity()) {
-      formBtn.removeAttribute("disabled");
-    } else {
-      formBtn.setAttribute("disabled", "");
-    }
-
-  });
+if (form) {
+  for (let i = 0; i < formInputs.length; i++) {
+    formInputs[i].addEventListener("input", function () {
+      if (form.checkValidity()) {
+        formBtn.removeAttribute("disabled");
+      } else {
+        formBtn.setAttribute("disabled", "");
+      }
+    });
+  }
 }
 
 
@@ -418,34 +405,37 @@ initScrollReveal();
 
 
 
-// Contact form submission
-document.querySelector("[data-form]").addEventListener("submit", async function(e) {
-  e.preventDefault();
+// Contact form submission (contact page only)
+const contactForm = document.querySelector("[data-form]");
+if (contactForm) {
+  contactForm.addEventListener("submit", async function(e) {
+    e.preventDefault();
 
-  const form = e.target;
-  const submitBtn = form.querySelector("[data-form-btn]");
-  submitBtn.disabled = true;
+    const form = e.target;
+    const submitBtn = form.querySelector("[data-form-btn]");
+    submitBtn.disabled = true;
 
-  const formData = new FormData(form);
+    const formData = new FormData(form);
 
-  try {
-    const response = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      body: formData
-    });
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      });
 
-    if (response.ok) {
-      showPopup("Your message has been sent!", "success");
-      form.reset();
-    } else {
-      showPopup("Something went wrong. Try again.", "error");
+      if (response.ok) {
+        showPopup("Your message has been sent!", "success");
+        form.reset();
+      } else {
+        showPopup("Something went wrong. Try again.", "error");
+      }
+    } catch {
+      showPopup("Network error. Please try again.", "error");
     }
-  } catch {
-    showPopup("Network error. Please try again.", "error");
-  }
 
-  submitBtn.disabled = false;
-});
+    submitBtn.disabled = false;
+  });
+}
 
 function showPopup(message, type) {
   const popup = document.createElement("div");

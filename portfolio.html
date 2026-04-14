@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio - Parth Patel</title>
+  <meta name="description" content="Portfolio of Parth Patel - Web design and development projects.">
+  <meta name="author" content="Parth Patel">
+
+  <meta property="og:title" content="Portfolio - Parth Patel">
+  <meta property="og:description" content="Portfolio of Parth Patel - Web design and development projects.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="./assets/images/my-avatar.jpeg">
+
+  <link rel="icon" href="./assets/images/logo.ico" type="image/x-icon">
+  <link rel="stylesheet" href="./assets/css/style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <canvas id="particles-canvas"></canvas>
+
+  <button class="bg-toggle-btn" id="bgToggle" title="Toggle background view" aria-label="Toggle background view">
+    <ion-icon name="eye-outline"></ion-icon>
+  </button>
+
+  <main>
+
+    <aside class="sidebar" data-sidebar>
+
+      <div class="sidebar-info">
+
+        <figure class="avatar-box">
+          <img src="./assets/images/my-avatar.jpeg" alt="Parth Patel" width="80">
+        </figure>
+
+        <div class="info-content">
+          <h1 class="name" title="Parth Patel">Parth Patel</h1>
+          <p class="title">Web developer</p>
+        </div>
+
+        <button class="info_more-btn" data-sidebar-btn aria-label="Show contact details" aria-expanded="false">
+          <span>Show Contacts</span>
+          <ion-icon name="chevron-down"></ion-icon>
+        </button>
+
+      </div>
+
+      <div class="sidebar-info_more">
+
+        <div class="separator"></div>
+
+        <ul class="contacts-list">
+
+          <li class="contact-item">
+            <div class="icon-box">
+              <ion-icon name="mail-outline"></ion-icon>
+            </div>
+            <div class="contact-info">
+              <p class="contact-title">Email</p>
+              <a href="mailto:perthhho@gmail.com" class="contact-link">perthhho@gmail.com</a>
+            </div>
+          </li>
+
+          <li class="contact-item">
+            <div class="icon-box">
+              <ion-icon name="phone-portrait-outline"></ion-icon>
+            </div>
+            <div class="contact-info">
+              <p class="contact-title">Phone</p>
+              <a href="tel:+919313383425" class="contact-link">+91 93133 83425</a>
+            </div>
+          </li>
+
+          <li class="contact-item">
+            <div class="icon-box">
+              <ion-icon name="calendar-outline"></ion-icon>
+            </div>
+            <div class="contact-info">
+              <p class="contact-title">Birthday</p>
+              <time datetime="2005-12-24">December 24, 2005</time>
+            </div>
+          </li>
+
+          <li class="contact-item">
+            <div class="icon-box">
+              <ion-icon name="location-outline"></ion-icon>
+            </div>
+            <div class="contact-info">
+              <p class="contact-title">Location</p>
+              <address>Vadodara, Gujarat, India</address>
+            </div>
+          </li>
+
+        </ul>
+
+        <div class="separator"></div>
+
+        <ul class="social-list">
+
+          <li class="social-item">
+            <a href="https://github.com/Perthho" target="_blank" rel="noopener" class="social-link" aria-label="GitHub">
+              <ion-icon name="logo-github"></ion-icon>
+            </a>
+          </li>
+
+          <li class="social-item">
+            <a href="https://www.linkedin.com/in/parth-patel-kumar/" target="_blank" rel="noopener" class="social-link" aria-label="LinkedIn">
+              <ion-icon name="logo-linkedin"></ion-icon>
+            </a>
+          </li>
+
+          <li class="social-item">
+            <a href="https://instagram.com/perthhho" target="_blank" rel="noopener" class="social-link" aria-label="Instagram">
+              <ion-icon name="logo-instagram"></ion-icon>
+            </a>
+          </li>
+
+        </ul>
+
+      </div>
+
+    </aside>
+
+
+    <div class="main-content">
+
+      <nav class="navbar">
+        <ul class="navbar-list">
+          <li class="navbar-item"><a class="navbar-link" href="index.html">About</a></li>
+          <li class="navbar-item"><a class="navbar-link" href="resume.html">Resume</a></li>
+          <li class="navbar-item"><a class="navbar-link active" href="portfolio.html">Portfolio</a></li>
+          <li class="navbar-item"><a class="navbar-link" href="tools.html">Tools</a></li>
+          <li class="navbar-item"><a class="navbar-link" href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+
+      <article class="portfolio active" data-page="portfolio">
+
+        <header>
+          <h2 class="h2 article-title">Portfolio</h2>
+        </header>
+
+        <section class="projects">
+
+          <ul class="filter-list">
+            <li class="filter-item">
+              <button class="active" data-filter-btn>All</button>
+            </li>
+            <li class="filter-item">
+              <button data-filter-btn>Web design</button>
+            </li>
+            <li class="filter-item">
+              <button data-filter-btn>Web development</button>
+            </li>
+          </ul>
+
+
+          <div class="filter-select-box">
+
+            <button class="filter-select" data-select>
+              <div class="select-value" data-selecct-value>Select Category</div>
+              <div class="select-icon">
+                <ion-icon name="chevron-down"></ion-icon>
+              </div>
+            </button>
+
+            <ul class="select-list">
+              <li class="select-item">
+                <button data-select-item>All</button>
+              </li>
+              <li class="select-item">
+                <button data-select-item>Web design</button>
+              </li>
+              <li class="select-item">
+                <button data-select-item>Web development</button>
+              </li>
+            </ul>
+
+          </div>
+
+          <ul class="project-list">
+
+            <li class="project-item active" data-filter-item data-category="web development">
+              <a href="https://www.clickprintphotobooth.in/" target="_blank" rel="noopener">
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="open-outline"></ion-icon>
+                  </div>
+                  <img src="./assets/images/portfolio/clickprintphotobooth.png" alt="ClickPrint Photobooth - business website with booking system" loading="lazy">
+                </figure>
+                <h3 class="project-title">ClickPrint Photobooth</h3>
+                <p class="project-category">Web development</p>
+              </a>
+            </li>
+
+            <li class="project-item active" data-filter-item data-category="web development">
+              <a href="https://campusbook-webapp.vercel.app/" target="_blank" rel="noopener">
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="open-outline"></ion-icon>
+                  </div>
+                  <img src="./assets/images/portfolio/campusbook.png" alt="CampusBook - startup landing page" loading="lazy">
+                </figure>
+                <h3 class="project-title">CampusBook</h3>
+                <p class="project-category">Web development</p>
+              </a>
+            </li>
+
+            <li class="project-item active" data-filter-item data-category="web design">
+              <a href="https://wanderwayword.com/" target="_blank" rel="noopener">
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="open-outline"></ion-icon>
+                  </div>
+                  <img src="./assets/images/portfolio/wanderwayword.png" alt="WanderWayWord - personal blog website" loading="lazy">
+                </figure>
+                <h3 class="project-title">WanderWayWord</h3>
+                <p class="project-category">Web design</p>
+              </a>
+            </li>
+
+            <li class="project-item active" data-filter-item data-category="web development">
+              <a href="https://autoprint-web.vercel.app/" target="_blank" rel="noopener">
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="open-outline"></ion-icon>
+                  </div>
+                  <img src="./assets/images/project-4.png" alt="AutoPrint - automatic kiosk web application" loading="lazy">
+                </figure>
+                <h3 class="project-title">AutoPrint Kiosk</h3>
+                <p class="project-category">Web development</p>
+              </a>
+            </li>
+
+            <li class="project-item active" data-filter-item data-category="web development">
+              <a href="https://main.ds8tdoe9ri88y.amplifyapp.com/dashboard" target="_blank" rel="noopener">
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="open-outline"></ion-icon>
+                  </div>
+                  <img src="./assets/images/portfolio/aisales.png" alt="AI Sales Copilot - sales dashboard web app" loading="lazy">
+                </figure>
+                <h3 class="project-title">AI Sales Copilot</h3>
+                <p class="project-category">Web development</p>
+              </a>
+            </li>
+
+          </ul>
+
+        </section>
+
+      </article>
+
+    </div>
+
+  </main>
+
+  <script src="./assets/js/script.js"></script>
+
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>
