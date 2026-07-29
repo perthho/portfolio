@@ -2151,7 +2151,6 @@ textarea.form-input::-webkit-resizer { display: none; }
   justify-content: space-between;
   align-items: flex-start;
   gap: 15px;
-  flex-wrap: wrap;
 }
 
 .download-btn {
